@@ -32,7 +32,7 @@ const Cart = () => {
   console.log(cart)
   return (
     <div
-      className={` fixed top-0 right-0  w-[350px] bg-gray-800 z-40 h-screen px-4 py-10 text-white transition-all duration-300 cart ${
+      className={` overflow-y-auto overflow-hidden  fixed top-0 right-0  w-[350px] bg-gray-800 z-40 h-screen px-4 py-10 text-white transition-all duration-300 cart ${
         cartOpen ? `translate-x-0` : ` translate-x-full`
       }`}
     >

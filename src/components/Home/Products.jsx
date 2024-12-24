@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { fetchProducts } from "../../api/allApi";
 import { useQuery } from "@tanstack/react-query";
 import Card from "../common/Card";
+import { ClockLoader } from "react-spinners";
 
 const Products = () => {
   const [limit, setLimit] = useState(10);
@@ -12,7 +13,7 @@ const Products = () => {
     queryFn: () => fetchProducts({ limit, skip }),
   });
 
-  if (isLoading) return <div>Loading</div>;
+  if (isLoading) return <div className=" flex justify-center items-center h-[100vh]"><ClockLoader /></div>;
 
   return (
     <div className=" flex flex-col gap-4 container text-center">
