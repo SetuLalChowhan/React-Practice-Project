@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useAllValues, useCart } from "../../contextApi/context";
 import { IoMdClose } from "react-icons/io";
 import { MdDeleteOutline } from "react-icons/md";
@@ -12,20 +12,37 @@ const Cart = () => {
    
   };
 
+    useEffect(() => {
+      const handleOutsideClick = (e) => {
+        if (!e.target.closest(".cart") && !e.target.closest(".close")) {
+         
+        }
+      };
+      document.addEventListener("click", handleOutsideClick);
+  
+      return () => {
+        document.removeEventListener("click", handleOutsideClick);
+      };
+    }, []);
+
+    const closeCart = ()=>{
+        handleCart(false)
+    }
+
   console.log(cart)
   return (
     <div
-      className={` fixed top-0 right-0  w-[350px] bg-gray-800 z-40 h-screen px-4 py-10 text-white transition-all duration-300 ${
+      className={` fixed top-0 right-0  w-[350px] bg-gray-800 z-40 h-screen px-4 py-10 text-white transition-all duration-300 cart ${
         cartOpen ? `translate-x-0` : ` translate-x-full`
       }`}
     >
       <div className=" flex justify-between ">
         <p>Total Products</p>
         <IoMdClose
-          className=" cursor-pointer"
+          className=" cursor-pointer close"
           color="white"
           size={30}
-          onClick={handleCart}
+          onClick={closeCart}
         />
       </div>
 

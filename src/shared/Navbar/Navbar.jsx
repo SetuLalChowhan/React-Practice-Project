@@ -28,9 +28,11 @@ const Navbar = () => {
   }, []);
 
   const { cart } = useCart();
-  const { handleCart } = useAllValues()
+  const { handleCart } = useAllValues();
 
-
+  const openCart = () => {
+    handleCart(true);
+  };
 
   return (
     <header className="py-6 sticky top-0 bg-gray-800 z-20">
@@ -57,7 +59,7 @@ const Navbar = () => {
 
         {/* Right Side Placeholder */}
         <div className=" flex gap-5 items-center">
-          <button onClick={handleCart} className=" relative">
+          <button onClick={openCart} className=" relative">
             <BsCart color="white" size={30} />
             <p className=" absolute -top-5 -right-2 text-[20px] text-white">
               {" "}
