@@ -6,22 +6,18 @@ import { useCart } from "../../contextApi/context";
 
 import { useWishlist } from "../../contextApi/context";
 
-
-
 const Card = ({ product }) => {
   const [like, setlike] = useState(false);
 
   const handleSubmit = () => {
     setlike(!like);
-    console.log(like);
   };
 
-    const{addToCart,removeFromCart}= useCart()
+  const { addToCart, removeFromCart } = useCart();
 
-    const handleAddToCart = () => {
-        addToCart(product);
-      };
-
+  const handleAddToCart = () => {
+    addToCart(product);
+  };
 
   return (
     <div className="w-[400px] h-[400px] relative shadow-lg bg-[#ddd] overflow-hidden cursor-pointer  group">
@@ -43,7 +39,10 @@ const Card = ({ product }) => {
 
       {/* Overlay and Add to Cart button */}
       <div className="absolute h-full w-full bg-black/20 flex items-center justify-center bottom-[-100%] group-hover:bottom-0 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out">
-        <button onClick={handleAddToCart} className="bg-white text-black px-4 py-2 rounded shadow hover:shadow-lg transition-transform duration-300 hover:scale-105">
+        <button
+          onClick={handleAddToCart}
+          className="bg-white text-black px-4 py-2 rounded shadow hover:shadow-lg transition-transform duration-300 hover:scale-105"
+        >
           Add to Cart
         </button>
       </div>
