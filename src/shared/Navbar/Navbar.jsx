@@ -32,6 +32,8 @@ const Navbar = () => {
 
   const openCart = () => {
     handleCart(true);
+
+    console.log("hi")
   };
 
   return (
