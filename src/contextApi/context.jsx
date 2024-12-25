@@ -16,8 +16,8 @@ export const useWishlist = () => useContext(WishlistContext);
 export const AllValuesProvider = ({ children }) => {
   const [cartOpen, setCartOpen] = useState(false);
 
-  const handleCart = (value) => {
-    setCartOpen(value);
+  const handleCart = () => {
+    setCartOpen(!cartOpen);
   };
 
   return (

@@ -1,40 +1,45 @@
-import Hamburger from "hamburger-react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { BsCart } from "react-icons/bs";
+import Hamburger from "hamburger-react";
 import { useAllValues, useCart } from "../../contextApi/context";
 
 const Navbar = () => {
   const navLinkClasses = ({ isActive }) =>
     isActive
-      ? `text-yellow-500 font-bold px-3 relative hover-link ${
-          isOpen ? `px-0` : `px-3`
-        }`
-      : `text-white relative hover-link ${isOpen ? `px-0` : `px-3`}`;
+      ? `text-yellow-500 font-bold px-3 relative hover-link`
+      : `text-white relative hover-link`;
 
   const [isOpen, setOpen] = useState(false);
-
-  useEffect(() => {
-    const handleOutsideClick = (e) => {
-      if (!e.target.closest(".mobile-nav") && !e.target.closest(".hamburger")) {
-        setOpen(false);
-      }
-    };
-    document.addEventListener("click", handleOutsideClick);
-
-    return () => {
-      document.removeEventListener("click", handleOutsideClick);
-    };
-  }, []);
-
+  const mobileNavRef = useRef(null); // Ref for the mobile navigation container
   const { cart } = useCart();
   const { handleCart } = useAllValues();
 
   const openCart = () => {
-    handleCart(true);
-
-    console.log("hi")
+    handleCart();
   };
+
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      console.log(mobileNavRef.current);
+        console.log(mobileNavRef.current.contains(e.target));
+        console.log(e.target.closest(".hamburger"));
+      if (
+        mobileNavRef.current &&
+        !mobileNavRef.current.contains(e.target) &&
+        !e.target.closest(".hamburger")
+      ) {
+        setOpen(false);
+       
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
 
   return (
     <header className="py-6 sticky top-0 bg-gray-800 z-20">
@@ -60,12 +65,11 @@ const Navbar = () => {
         </nav>
 
         {/* Right Side Placeholder */}
-        <div className=" flex gap-5 items-center">
-          <button onClick={openCart} className=" relative">
+        <div className="flex gap-5 items-center">
+          <button onClick={openCart} className="relative">
             <BsCart color="white" size={30} />
-            <p className=" absolute -top-5 -right-2 text-[20px] text-white">
-              {" "}
-              {cart.length}{" "}
+            <p className="absolute -top-5 -right-2 text-[20px] text-white">
+              {cart.length}
             </p>
           </button>
           <Link
@@ -92,6 +96,7 @@ const Navbar = () => {
 
       {/* Mobile Version */}
       <div
+        ref={mobileNavRef}
         className={`w-[240px] flex flex-col transition-all duration-300 gap-2 ${
           isOpen ? `translate-x-0` : `-translate-x-full`
         } items-start px-10 border-b-2 h-screen fixed top-0 left-0 bg-gray-800 py-10 mobile-nav z-50`}

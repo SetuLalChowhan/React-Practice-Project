@@ -5,8 +5,8 @@ export const fetchProducts = async ({limit,skip}) => {
     const response = await axiosInstance.get(
       `/products/?limit=${limit}&skip=${skip}`
     );
-   console.log(response.data.products)
-    return response.data.products
+  
+    return response.data
   } catch (err) {
     console.log(err);
   }

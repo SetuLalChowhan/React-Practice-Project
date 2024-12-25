@@ -13,7 +13,7 @@ const Cart = () => {
   };
 
   const closeCart = () => {
-    handleCart(false);
+    handleCart();
   };
 
   const handleOutsideClick = (event) => {
@@ -54,7 +54,7 @@ const Cart = () => {
         {cart.map((item, index) => (
           <div key={index} className="flex justify-between items-center">
             <div className="flex gap-5 items-center">
-              <div className="w-24 h-24 overflow-hidden border-2 border-red-500">
+              <div className="w-24 h-24 overflow-hidden ">
                 <img
                   src={item?.images[0]}
                   className="w-full h-full object-contain"
