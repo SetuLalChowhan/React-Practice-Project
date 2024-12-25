@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import Card from "../common/Card";
 import { ClockLoader } from "react-spinners";
 import CustomPagination from "../common/pagination/CustomPagination";
+import Animations from "../common/Animations";
 
 const Products = () => {
   const [limit, setLimit] = useState(9);
@@ -23,9 +24,11 @@ const Products = () => {
       <h1 className=" text-[24px] font-semibold capitalize">All Products</h1>
 
       {isLoading ? (
-        <div className=" flex justify-center items-center h-[100vh]">
-          <ClockLoader />
-        </div>
+         <div className="grid grid-cols-3 gap-5 ">
+         {[...Array(9)].map((_, index) => (
+           <Animations key={index} />
+         ))}
+       </div>
       ) : (
         <>
           <div className=" grid grid-cols-3 gap-5">
