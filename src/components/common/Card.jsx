@@ -16,7 +16,11 @@ const Card = ({ product }) => {
   const { addToCart, removeFromCart } = useCart();
 
   const handleAddToCart = () => {
-    addToCart(product);
+    const updateProduct = {
+      ...product,
+      qty: 1,
+    };
+    addToCart(updateProduct);
   };
 
   return (

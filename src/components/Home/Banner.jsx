@@ -1,6 +1,8 @@
 import React from "react";
 
 import BannerImage from "../../assets/images/banner.jpg";
+import BannerImage2 from "../../assets/images/banner2.jpg";
+import BannerImage3 from "../../assets/images/banner3.jpg";
 
 // import Swiper core and required modules
 import {
@@ -45,14 +47,14 @@ const Banner = () => {
       </SwiperSlide>
       <SwiperSlide>
         <img
-          src={BannerImage}
+          src={BannerImage2}
           alt="BannerImage"
           className=" w-full h-auto block"
         />
       </SwiperSlide>
       <SwiperSlide>
         <img
-          src={BannerImage}
+          src={BannerImage3}
           alt="BannerImage"
           className=" w-full h-auto block"
         />

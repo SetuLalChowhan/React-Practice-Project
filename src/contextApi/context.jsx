@@ -34,10 +34,50 @@ export const CartProvider = ({ children }) => {
     return savedCart ? JSON.parse(savedCart) : [];
   });
 
+  console.log(cart)
+
   const addToCart = (product) => {
     setCart((prev) => {
-      const updatedCart = [...prev, product];
-      localStorage.setItem("cart", JSON.stringify(updatedCart)); // Save updated cart to localStorage
+      let updatedCart = [...prev];
+      const itemExist = updatedCart.find((item) => item.id == product.id);
+
+      if (itemExist) {
+        updatedCart.forEach((item) => {
+          item.id == product.id ? (item.qty += 1) : item;
+        });
+      } else {
+        updatedCart = [...prev, product];
+      }
+
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      return updatedCart;
+    });
+  };
+  const addQty = (product) => {
+    setCart((prev) => {
+      let updatedCart = [...prev];
+      const itemExist = updatedCart.find((item) => item.id == product.id);
+
+      if (itemExist) {
+        updatedCart.forEach((item) => {
+          item.id == product.id ? (item.qty += 1) : item;
+        });
+      }
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      return updatedCart;
+    });
+  };
+  const removeQty = (product) => {
+    setCart((prev) => {
+      let updatedCart = [...prev];
+      const itemExist = updatedCart.find((item) => item.id == product.id);
+
+      if (itemExist) {
+        updatedCart.forEach((item) => {
+          item.qty == 0 ? item : item.id == product.id ? (item.qty -= 1) : item;
+        });
+      }
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
       return updatedCart;
     });
   };
@@ -51,7 +91,9 @@ export const CartProvider = ({ children }) => {
   };
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
+    <CartContext.Provider
+      value={{ cart, addToCart, removeFromCart, addQty, removeQty }}
+    >
       {children}
     </CartContext.Provider>
   );
