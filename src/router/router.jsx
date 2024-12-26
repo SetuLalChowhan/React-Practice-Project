@@ -4,6 +4,7 @@ import UserLayout from "../layout/UserLayout";
 import AdminLayout from "../layout/AdminLayout";
 import DashboardHome from "../pages/Dashboard/DashboardHome";
 import About from "../pages/UserPage/About";
+import SignUp from "../pages/authentication/SignUp";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+      },
+      {
+        path: "/signup",
+        element: <SignUp />,
       },
     ],
   },
