@@ -15,7 +15,7 @@ export default function CustomPagination({
 
     // Smooth scroll to the top of the page
     window.scrollTo({
-      top: 500,
+      top: 700,
       behavior: "smooth",
     });
   };

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { fetchProducts } from "../../api/allApi";
-import { useQuery } from "@tanstack/react-query";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import Card from "../common/Card";
 import { ClockLoader } from "react-spinners";
 import CustomPagination from "../common/pagination/CustomPagination";
@@ -13,6 +13,7 @@ const Products = () => {
   const { data, isError, error, isLoading } = useQuery({
     queryKey: ["products", limit, skip],
     queryFn: () => fetchProducts({ limit, skip }),
+    placeholderData: keepPreviousData,
   });
 
   console.log(isLoading);
@@ -24,11 +25,11 @@ const Products = () => {
       <h1 className=" text-[24px] font-semibold capitalize">All Products</h1>
 
       {isLoading ? (
-         <div className="grid grid-cols-3 gap-5 ">
-         {[...Array(9)].map((_, index) => (
-           <Animations key={index} />
-         ))}
-       </div>
+        <div className="grid grid-cols-3 gap-5 ">
+          {[...Array(9)].map((_, index) => (
+            <Animations key={index} />
+          ))}
+        </div>
       ) : (
         <>
           <div className=" grid grid-cols-3 gap-5">

@@ -29,6 +29,7 @@ const Card = ({ product }) => {
         src={product?.images[0]}
         alt={product.title}
         className="w-full h-full object-contain group-hover:scale-105 transition-all duration-300 ease"
+        loading="lazy"
       />
 
       {/* Love Button */}
