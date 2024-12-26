@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Progress from "./Progress";
 
-const message = ["Learn React", "Apply For Jobs", "Invest Your Income"];
+const message = ["Learn React", "Apply For Jobs", "Invest Your Income","Completed Thank You"];
 
 const SignUp = () => {
   return (
@@ -18,9 +18,9 @@ const Multi = () => {
     if (step > 1) setStep((prev) => prev - 1);
   }
   function handleNext() {
-    if (step < 3) setStep((prev) => prev + 1);
+    if (step < 4) setStep((prev) => prev + 1);
   }
-  const totalSteps = 3;
+  const totalSteps = 4;
 
   return (
     <div className="container1">
@@ -29,6 +29,7 @@ const Multi = () => {
         <div className={`${step >= 1 ? "circle active" : "circle"}`}>1</div>
         <div className={`${step >= 2 ? "circle active" : "circle"}`}>2</div>
         <div className={`${step >= 3 ? "circle active" : "circle"}`}>3</div>
+        <div className={`${step >= 4 ? "circle active" : "circle"}`}>4</div>
       </div>
       <div className="content">
         <Message step={step} />
