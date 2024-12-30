@@ -5,10 +5,13 @@ import AdminLayout from "../layout/AdminLayout";
 import DashboardHome from "../pages/Dashboard/DashboardHome";
 import About from "../pages/UserPage/About";
 import SignUp from "../pages/authentication/SignUp";
+import Invoices from "../pages/Dashboard/Invoices";
+import Review from "../pages/Dashboard/Review";
+import Setting from "../pages/Dashboard/Setting";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "",
     element: <UserLayout />,
     children: [
       {
@@ -26,12 +29,21 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/my-dashboard",
+    path: "/dashboard",
     element: <AdminLayout />,
     children: [
       {
-        path: "/my-dashboard",
+        index:true,
+        path: "/dashboard",
         element: <DashboardHome />,
+      },
+      {
+        path: "/dashboard/review",
+        element: <Review />,
+      },
+      {
+        path: "/dashboard/setting",
+        element: <Setting />,
       },
     ],
   },
