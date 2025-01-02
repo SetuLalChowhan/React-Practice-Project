@@ -8,6 +8,10 @@ import SignUp from "../pages/authentication/SignUp";
 import Invoices from "../pages/Dashboard/Invoices";
 import Review from "../pages/Dashboard/Review";
 import Setting from "../pages/Dashboard/Setting";
+import ProfileChange from "@/pages/Dashboard/ProfileChange";
+import ProfileOverview from "@/pages/Dashboard/ProfileOverview";
+import AllProducts from "@/pages/Dashboard/AllProducts";
+import SubProducts from "@/pages/Dashboard/SubProducts";
 
 const router = createBrowserRouter([
   {
@@ -33,7 +37,7 @@ const router = createBrowserRouter([
     element: <AdminLayout />,
     children: [
       {
-        index:true,
+        index: true,
         path: "/dashboard",
         element: <DashboardHome />,
       },
@@ -44,6 +48,22 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/setting",
         element: <Setting />,
+      },
+      {
+        path: "/dashboard/change_profile",
+        element: <ProfileChange />,
+      },
+      {
+        path: "/dashboard/change_overview",
+        element: <ProfileOverview />,
+      },
+      {
+        path: "/dashboard/all_products",
+        element: <AllProducts />,
+      },
+      {
+        path: "/dashboard/sub_products",
+        element: <SubProducts />,
       },
     ],
   },

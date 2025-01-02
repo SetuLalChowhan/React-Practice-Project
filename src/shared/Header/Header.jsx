@@ -19,14 +19,14 @@ const Header = ({ isOpen, setOpen }) => {
       </div>
 
       <div>
-        <Popover>
-          <PopoverTrigger>
+        <Popover >
+          <PopoverTrigger >
             <Avatar>
               <AvatarImage src="https://github.com/shadcn.png" />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
           </PopoverTrigger>
-          <PopoverContent>
+          <PopoverContent className=" w-28">
             <div className=" flex  flex-col justify-center text-center  gap-2">
                <p className=" py-3 border-b-2 border-gray-200">Profile</p>
                <p>Setting</p>
