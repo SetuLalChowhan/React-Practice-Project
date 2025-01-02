@@ -25,15 +25,11 @@
   max-width: 700px;
   background-color: #fff;
   margin: 0px auto;
-  padding: 1rem 2rem;
+
   border-radius: 5px;
   overflow-x: hidden;
 }
-.container1 .content h2 {
-  font-size: 2rem;
-  color: green;
-  text-align: center;
-}
+
 
 .progress_container {
   display: flex;
@@ -49,7 +45,7 @@
   left: 0;
   transform: translateY(-50%);
   height: 4px;
-  z-index: 1;
+  z-index: 2;
   transition: all 0, 3s ease-in;
   height: 4px;
   background: #ddd;
@@ -65,12 +61,14 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  z-index: 1;
+  z-index: 2;
 }
 .circle.active {
   border-color: green;
   color: white;
   background-color: #43766c;
+  z-index: 2;
+  opacity: 100;
 }
 
 .btns {
@@ -120,3 +118,14 @@
     --radius: 0.5rem;
   }
 }
+
+.no-spin::-webkit-inner-spin-button,
+.no-spin::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.no-spin {
+  -moz-appearance: textfield; /* For Firefox */
+}
+

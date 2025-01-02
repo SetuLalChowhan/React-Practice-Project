@@ -34,7 +34,7 @@ export const CartProvider = ({ children }) => {
     return savedCart ? JSON.parse(savedCart) : [];
   });
 
-  console.log(cart)
+  console.log(cart);
 
   const addToCart = (product) => {
     setCart((prev) => {
