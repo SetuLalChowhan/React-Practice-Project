@@ -63,14 +63,14 @@ const DashSidebar = ({ isOpen, setOpen }) => {
       <div
         className={`fixed inset-0 bg-black transition-opacity duration-300 ${
           isOpen ? "opacity-15 visible" : "opacity-0 invisible"
-        } z-[20] xl:hidden`}
+        } z-[20]  xl:hidden`}
         onClick={() => setOpen(false)}
       ></div>
 
       <div
-        className={`w-[250px] fixed lg:sticky xl:left-0 top-0 bottom-0 transition-all duration-300 shadow-md bg-[#fff] py-6 ${
+        className={`w-[250px] fixed lg:sticky lg:top-0 lg:left-0 min-h-screen  transition-all duration-300 shadow-md bg-[#fff] py-6 ${
           isOpen ? `left-[0px]` : `-left-[100%]`
-        } h-screen z-50`}
+        }  z-50 `}
       >
         <Link
           to={"/dashboard"}
@@ -86,7 +86,7 @@ const DashSidebar = ({ isOpen, setOpen }) => {
           </div>
         </Link>
 
-        <ScrollArea className="h-full w-full overflow-auto mt-10">
+        <ScrollArea className="h-[500px] w-full overflow-auto mt-10 ">
           <Accordion
             type="single"
             collapsible

@@ -30,7 +30,6 @@
   overflow-x: hidden;
 }
 
-
 .progress_container {
   display: flex;
   justify-content: space-between;
@@ -128,4 +127,6 @@
 .no-spin {
   -moz-appearance: textfield; /* For Firefox */
 }
+
+
 

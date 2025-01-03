@@ -16,30 +16,28 @@ const Cart = () => {
     handleCart();
   };
 
-  const handleOutsideClick = (event) => {
-    if (cartRef.current && !cartRef.current.contains(event.target)) {
-      closeCart();
-    }
-  };
 
-  useEffect(() => {
-    if (cartOpen) {
-      document.addEventListener("mousedown", handleOutsideClick);
-    } else {
-      document.removeEventListener("mousedown", handleOutsideClick);
-    }
-    return () => {
-      document.removeEventListener("mousedown", handleOutsideClick);
-    };
-  }, [cartOpen]);
+
+
+
 
   const cartTotalValues = cart.reduce(
     (acc, item) => acc + item.price * item.qty,
     0
   );
+  
 
   return (
-    <div
+   <>
+   <div
+        className={`fixed w-full inset-0 bg-black transition-opacity duration-300 ${
+          cartOpen ? "opacity-15 visible" : "opacity-0 invisible"
+        } z-[20] `}
+        onClick={() =>closeCart()}
+      ></div>
+   
+   
+   <div
       ref={cartRef}
       className={`overflow-hidden h-[100vh] fixed top-0 right-0 w-full sm:w-[400px] bg-gray-900 shadow-lg z-40 px-4 py-8 text-white transition-all duration-300 ${
         cartOpen ? "translate-x-0" : "translate-x-full"
@@ -113,6 +111,7 @@ const Cart = () => {
         </button>
       </div>
     </div>
+   </>
   );
 };
 

@@ -9,8 +9,8 @@ import {
 
 const Header = ({ isOpen, setOpen }) => {
   return (
-    <div className=" w-full   shadow-lg py-4 px-16 sticky top-0  flex justify-between">
-      <p className=" font-poppins font-semibold text-2xl lg:block hidden">
+    <div className=" w-full   shadow-lg py-4 px-16 sticky top-0  z-[100]   flex justify-between">
+      <p className=" font-poppins font-semibold text-2xl lg:block hidden ">
         Welcome to The Dashboard
       </p>
 
