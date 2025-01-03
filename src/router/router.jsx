@@ -5,13 +5,14 @@ import AdminLayout from "../layout/AdminLayout";
 import DashboardHome from "../pages/Dashboard/DashboardHome";
 import About from "../pages/UserPage/About";
 import SignUp from "../pages/authentication/SignUp";
-import Invoices from "../pages/Dashboard/Invoices";
 import Review from "../pages/Dashboard/Review";
 import Setting from "../pages/Dashboard/Setting";
 import ProfileChange from "@/pages/Dashboard/ProfileChange";
 import ProfileOverview from "@/pages/Dashboard/ProfileOverview";
 import AllProducts from "@/pages/Dashboard/AllProducts";
 import SubProducts from "@/pages/Dashboard/SubProducts";
+import TestB from "@/pages/Dashboard/TestB";
+import TestA from "@/pages/Dashboard/TestA";
 
 const router = createBrowserRouter([
   {
@@ -64,6 +65,14 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/sub_products",
         element: <SubProducts />,
+      },
+      {
+        path: "/dashboard/test/a",
+        element: <TestA />,
+      },
+      {
+        path: "/dashboard/test/b",
+        element: <TestB />,
       },
     ],
   },
