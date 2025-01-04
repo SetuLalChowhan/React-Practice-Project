@@ -111,13 +111,15 @@ export const WishlistProvider = ({ children }) => {
 
   const wishAdd = (product) => {
     setWishlist((prevWishlist) => {
-      const itemExist = prevWishlist.some((item) => item.id === product.id);
-      let updatedWishlist;
+      let updatedWishlist = [...prevWishlist];
+      const itemExist = updatedWishlist.some((item) => item.id === product.id);
 
       if (itemExist) {
-        updatedWishlist = prevWishlist.filter((item) => item.id !== product.id);
+        updatedWishlist = updatedWishlist.filter(
+          (item) => item.id !== product.id
+        );
       } else {
-        updatedWishlist = [...prevWishlist, product];
+        updatedWishlist = [...updatedWishlist, product];
       }
 
       localStorage.setItem("wishList", JSON.stringify(updatedWishlist));
