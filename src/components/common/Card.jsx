@@ -7,13 +7,12 @@ import { useCart } from "../../contextApi/context";
 import { useWishlist } from "../../contextApi/context";
 
 const Card = ({ product }) => {
-  const [like, setlike] = useState(false);
+  const { addToCart } = useCart();
 
+  const { wishlist, wishAdd } = useWishlist();
   const handleSubmit = () => {
-    setlike(!like);
+    wishAdd(product);
   };
-
-  const { addToCart, removeFromCart } = useCart();
 
   const handleAddToCart = () => {
     const updateProduct = {
@@ -23,6 +22,16 @@ const Card = ({ product }) => {
     addToCart(updateProduct);
   };
 
+  const checkWislist = () => {
+    const itemLike = wishlist.find((item) => item.id === product.id);
+
+    if (itemLike) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+  console.log(wishlist.length);
   return (
     <div className="w-[400px] h-[400px] relative shadow-lg bg-[#ddd] overflow-hidden cursor-pointer  group">
       <img
@@ -38,7 +47,7 @@ const Card = ({ product }) => {
         className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
       >
         <button className="text-red-500 text-2xl hover:text-red-700 ">
-          {like ? <IoHeart /> : <IoHeartOutline />}
+          {checkWislist() ? <IoHeart /> : <IoHeartOutline />}
         </button>
       </div>
 

@@ -1,5 +1,5 @@
 // src/CartContext.js
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext, useEffect } from "react";
 
 // values
 const AllValuesContext = createContext();
@@ -15,15 +15,17 @@ export const useWishlist = () => useContext(WishlistContext);
 
 export const AllValuesProvider = ({ children }) => {
   const [cartOpen, setCartOpen] = useState(false);
-  const [modal,setModal]  =useState(false)
-  const [like,setLike] =useState(false)
+  const [modal, setModal] = useState(false);
+  const [like, setLike] = useState(false);
 
   const handleCart = () => {
     setCartOpen(!cartOpen);
   };
 
   return (
-    <AllValuesContext.Provider value={{ cartOpen, handleCart,modal,setModal,like,setLike }}>
+    <AllValuesContext.Provider
+      value={{ cartOpen, handleCart, modal, setModal, like, setLike }}
+    >
       {children}
     </AllValuesContext.Provider>
   );
@@ -102,22 +104,30 @@ export const CartProvider = ({ children }) => {
 };
 
 export const WishlistProvider = ({ children }) => {
-  const [wishlist, setWishlist] = useState([]);
+  const [wishlist, setWishlist] = useState(() => {
+    const savedWishlist = localStorage.getItem("wishList");
+    return savedWishlist ? JSON.parse(savedWishlist) : [];
+  });
 
-  const addToWishlist = (product) => {
-    setWishlist((prevWishlist) => [...prevWishlist, product]);
-  };
+  const wishAdd = (product) => {
+    setWishlist((prevWishlist) => {
+      const itemExist = prevWishlist.some((item) => item.id === product.id);
+      let updatedWishlist;
 
-  const removeFromWishlist = (productId) => {
-    setWishlist((prevWishlist) =>
-      prevWishlist.filter((item) => item.id !== productId)
-    );
+      if (itemExist) {
+        updatedWishlist = prevWishlist.filter((item) => item.id !== product.id);
+      } else {
+        updatedWishlist = [...prevWishlist, product];
+      }
+
+      localStorage.setItem("wishList", JSON.stringify(updatedWishlist));
+
+      return updatedWishlist;
+    });
   };
 
   return (
-    <WishlistContext.Provider
-      value={{ wishlist, addToWishlist, removeFromWishlist }}
-    >
+    <WishlistContext.Provider value={{ wishlist, wishAdd }}>
       {children}
     </WishlistContext.Provider>
   );
