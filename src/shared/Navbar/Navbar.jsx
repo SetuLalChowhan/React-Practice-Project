@@ -11,9 +11,7 @@ const Navbar = () => {
     isActive
       ? `text-yellow-500 font-bold px-3 relative hover-link`
       : `text-white relative hover-link px-3`;
-
   const [isOpen, setOpen] = useState(false);
-  const mobileNavRef = useRef(null); // Ref for the mobile navigation container
   const searchRef = useRef(null); // Ref for the search area
   const { cart } = useCart();
   const { handleCart } = useAllValues();
@@ -24,7 +22,7 @@ const Navbar = () => {
 
   const [search, setSearch] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
-  const [isSearchVisible, setSearchVisible] = useState(false); // State for search area visibility
+  const [isSearchVisible, setSearchVisible] = useState(false);
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -45,10 +43,7 @@ const Navbar = () => {
   // Detect clicks outside the search area
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (
-        searchRef.current &&
-        !searchRef.current.contains(event.target)
-      ) {
+      if (searchRef.current && !searchRef.current.contains(event.target)) {
         setSearchVisible(false); // Hide search area
       }
     };

@@ -15,13 +15,15 @@ export const useWishlist = () => useContext(WishlistContext);
 
 export const AllValuesProvider = ({ children }) => {
   const [cartOpen, setCartOpen] = useState(false);
+  const [modal,setModal]  =useState(false)
+  const [like,setLike] =useState(false)
 
   const handleCart = () => {
     setCartOpen(!cartOpen);
   };
 
   return (
-    <AllValuesContext.Provider value={{ cartOpen, handleCart }}>
+    <AllValuesContext.Provider value={{ cartOpen, handleCart,modal,setModal,like,setLike }}>
       {children}
     </AllValuesContext.Provider>
   );

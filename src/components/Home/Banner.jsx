@@ -36,7 +36,6 @@ const Banner = () => {
         disableOnInteraction: false,
       }}
       loop={true}
-      
     >
       <SwiperSlide>
         <img
