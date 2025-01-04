@@ -24,7 +24,7 @@ import "swiper/css/scrollbar";
 const Banner = () => {
   return (
     <Swiper
-      className="w-full"
+      className="w-full  pointer-events-none"
       // install Swiper modules
       modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
       spaceBetween={50}

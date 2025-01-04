@@ -34,50 +34,50 @@ export const CartProvider = ({ children }) => {
     return savedCart ? JSON.parse(savedCart) : [];
   });
 
-  console.log(cart);
+  const updateLocalStorage = (cart) => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  };
 
   const addToCart = (product) => {
     setCart((prev) => {
       let updatedCart = [...prev];
-      const itemExist = updatedCart.find((item) => item.id == product.id);
+      const existingItem = updatedCart.find((item) => item.id === product.id);
 
-      if (itemExist) {
-        updatedCart.forEach((item) => {
-          item.id == product.id ? (item.qty += 1) : item;
-        });
+      if (existingItem) {
+        updatedCart = updatedCart.map((item) =>
+          item.id === product.id ? { ...item, qty: item.qty + 1 } : item
+        );
       } else {
-        updatedCart = [...prev, product];
+        updatedCart.push({ ...product, qty: 1 }); // Initialize `qty` for new product
       }
 
-      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      updateLocalStorage(updatedCart);
       return updatedCart;
     });
   };
+
   const addQty = (product) => {
     setCart((prev) => {
-      let updatedCart = [...prev];
-      const itemExist = updatedCart.find((item) => item.id == product.id);
+      const updatedCart = prev.map((item) =>
+        item.id === product.id ? { ...item, qty: item.qty + 1 } : item
+      );
 
-      if (itemExist) {
-        updatedCart.forEach((item) => {
-          item.id == product.id ? (item.qty += 1) : item;
-        });
-      }
-      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      updateLocalStorage(updatedCart);
       return updatedCart;
     });
   };
+
   const removeQty = (product) => {
     setCart((prev) => {
-      let updatedCart = [...prev];
-      const itemExist = updatedCart.find((item) => item.id == product.id);
+      const updatedCart = prev
+        .map((item) =>
+          item.id === product.id
+            ? { ...item, qty: Math.max(item.qty - 1, 0) } // Prevent negative quantity
+            : item
+        )
+        .filter((item) => item.qty > 0); // Remove item if qty is 0
 
-      if (itemExist) {
-        updatedCart.forEach((item) => {
-          item.qty == 0 ? item : item.id == product.id ? (item.qty -= 1) : item;
-        });
-      }
-      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      updateLocalStorage(updatedCart);
       return updatedCart;
     });
   };
@@ -85,7 +85,7 @@ export const CartProvider = ({ children }) => {
   const removeFromCart = (productId) => {
     setCart((prev) => {
       const updatedCart = prev.filter((product) => product.id !== productId);
-      localStorage.setItem("cart", JSON.stringify(updatedCart)); // Save updated cart to localStorage
+      updateLocalStorage(updatedCart);
       return updatedCart;
     });
   };

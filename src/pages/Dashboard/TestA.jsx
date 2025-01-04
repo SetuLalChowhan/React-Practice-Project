@@ -92,10 +92,9 @@ const TestA = () => {
       sensors={sensors}
       collisionDetection={closestCenter}
       onDragEnd={handleDragEnd}
-
     >
       <Table className="mt-7">
-        <TableHeader >
+        <TableHeader>
           <SortableContext
             items={columns.map((col) => col.id)}
             strategy={verticalListSortingStrategy}
@@ -106,7 +105,7 @@ const TestA = () => {
                   key={column.id}
                   id={column.id}
                   label={column.label}
-                  className= "min-w-[1000px]"
+                  className="min-w-[1000px]"
                 />
               ))}
             </TableRow>

@@ -11,3 +11,13 @@ export const fetchProducts = async ({ limit, skip }) => {
     console.log(err);
   }
 };
+
+export const searchApi = async (search) => {
+  try {
+    const response = await axiosInstance.get(`/products/search?q=${search} `);
+
+    return response.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
