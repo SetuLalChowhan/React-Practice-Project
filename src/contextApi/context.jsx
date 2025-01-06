@@ -119,7 +119,7 @@ export const WishlistProvider = ({ children }) => {
           (item) => item.id !== product.id
         );
       } else {
-        updatedWishlist = [...updatedWishlist, product];
+        updatedWishlist.push(product)
       }
 
       localStorage.setItem("wishList", JSON.stringify(updatedWishlist));

@@ -15,11 +15,8 @@ const Card = ({ product }) => {
   };
 
   const handleAddToCart = () => {
-    const updateProduct = {
-      ...product,
-      qty: 1,
-    };
-    addToCart(updateProduct);
+    
+    addToCart(product);
   };
 
   const checkWislist = () => {
@@ -46,7 +43,7 @@ const Card = ({ product }) => {
         onClick={handleSubmit}
         className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
       >
-        <button className="text-red-500 text-2xl hover:text-red-700 ">
+        <button className="text-red-500 text-2xl ">
           {checkWislist() ? <IoHeart /> : <IoHeartOutline />}
         </button>
       </div>
