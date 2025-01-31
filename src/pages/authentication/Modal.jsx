@@ -31,6 +31,9 @@ const Modal = ({ open, handleClick }) => {
     };
   }, [open]);
 
+
+  const signUpmutation =useMuation()
+
   return (
     <div
       className={`${
@@ -58,6 +61,19 @@ const Modal = ({ open, handleClick }) => {
           <p className="text-gray-600">
             This is a professional-looking modal with smooth transitions.
           </p>
+
+          <button> {
+            signUpmutation.isPending ? (   <ClipLoader
+  
+              loading={signUpmutation.isPending }
+              color='white'
+              size={20}
+              aria-label="Loading Spinner"
+              data-testid="loader"
+            />):"Submit"
+}</button>
+
+        
         </div>
       </div>
     </div>

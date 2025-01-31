@@ -58,9 +58,9 @@ const Navbar = () => {
   return (
     <>
       <div
-        className={`fixed inset-0 bg-black transition-opacity duration-300 ${
+        className={`fixed  inset-0 bg-black transition-opacity duration-300 ${
           isOpen ? "opacity-15 visible" : "opacity-0 invisible"
-        } z-[20] xl:hidden `}
+        } z-[20] xl:hidden  `}
         onClick={() => setOpen(false)}
       ></div>
 

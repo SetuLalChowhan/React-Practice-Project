@@ -13,6 +13,7 @@ import AllProducts from "@/pages/Dashboard/AllProducts";
 import SubProducts from "@/pages/Dashboard/SubProducts";
 import TestB from "@/pages/Dashboard/TestB";
 import TestA from "@/pages/Dashboard/TestA";
+import Page from "@/pages/FramerMotion/Page";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         element: <SignUp />,
+      },
+      {
+        path: "/framer-motion",
+        element: <Page />,
       },
     ],
   },
@@ -74,6 +79,7 @@ const router = createBrowserRouter([
         path: "/dashboard/test/b",
         element: <TestB />,
       },
+     
     ],
   },
 ]);
