@@ -14,6 +14,7 @@ import SubProducts from "@/pages/Dashboard/SubProducts";
 import TestB from "@/pages/Dashboard/TestB";
 import TestA from "@/pages/Dashboard/TestA";
 import Page from "@/pages/FramerMotion/Page";
+import Text1 from "@/pages/Text1";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,14 @@ const router = createBrowserRouter([
       {
         path: "/framer-motion",
         element: <Page />,
+      },
+      {
+        path: "/scroll-text",
+        element: <Page />,
+      },
+      {
+        path: "/scroll-text1",
+        element: <Text1 />,
       },
     ],
   },
