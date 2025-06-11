@@ -9,7 +9,7 @@ const UserLayout = () => {
     <>
       <Navbar />
       <Outlet />
-      <Cart />
+      {/* <Cart /> */}
       <Footer />
     </>
   );

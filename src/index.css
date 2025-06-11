@@ -116,6 +116,10 @@
   :root {
     --radius: 0.5rem;
   }
+  .theme {
+    --animate-marquee: marquee var(--duration) infinite linear;
+    --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+  }
 }
 
 .no-spin::-webkit-inner-spin-button,
@@ -126,4 +130,50 @@
 
 .no-spin {
   -moz-appearance: textfield; /* For Firefox */
+}
+
+@theme inline {
+  @keyframes marquee {
+  from {
+    transform: translateX(0);
+    }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+  @keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+    }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+    }
+  }
+}
+@keyframes marquee {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.animate-marquee-vertical {
+  animation: marquee linear infinite;
+  animation-duration: var(--duration, 40s);
+}
+
+.animate-marquee-vertical-reverse {
+  animation: marquee-reverse linear infinite;
+  animation-duration: var(--duration, 40s);
 }

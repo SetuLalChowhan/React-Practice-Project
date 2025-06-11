@@ -6,6 +6,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import RangeSliderCard from "@/components/RangeSliderCard";
+import { MarqueeDemoVertical } from "./MarqueeDemoVertical";
 
 const About = () => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
@@ -38,6 +39,8 @@ const About = () => {
           <span>Nice bro</span>
         </PopoverContent>
       </Popover> */}
+<MarqueeDemoVertical/>
+      
     </div>
   );
 };
